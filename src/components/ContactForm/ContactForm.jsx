@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-export class Form extends Component {
+import PropTypes from 'prop-types';
+
+export class ContactForm extends Component {
   state = {
     contacts: [],
     name: '',
@@ -54,3 +56,7 @@ export class Form extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  formSubmitHandler: PropTypes.func.isRequired,
+};
