@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export class ContactForm extends Component {
   state = {
-    contacts: [],
     name: '',
     number: '',
   };
@@ -58,5 +57,5 @@ export class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-  formSubmitHandler: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
