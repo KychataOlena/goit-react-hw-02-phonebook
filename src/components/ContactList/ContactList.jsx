@@ -1,20 +1,21 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ContactLi, ContactUl } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onDeletedContact }) => (
-  <ul>
+  <ContactUl>
     {contacts.map(({ id, name, number }) => (
-      <li key={id}>
+      <ContactLi key={id}>
         <ContactItem
           id={id}
           contact={name}
           number={number}
           onDeletedContact={onDeletedContact}
         />
-      </li>
+      </ContactLi>
     ))}
-  </ul>
+  </ContactUl>
 );
 
 ContactList.propTypes = {

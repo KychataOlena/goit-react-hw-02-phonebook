@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { ContactForm } from '../ContactForm/ContactForm';
+import { ContactList } from '../ContactList/ContactList';
+import { Filter } from '../Filter/Filter';
+import { Wrapper, MainTitle } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -17,15 +18,21 @@ export class App extends Component {
 
   formSubmitHandler = data => {
     console.log(data);
+    const contactName = this.state.contacts;
     // console.log(nanoid());
     const contact = {
       id: nanoid(),
       name: data.name,
       number: data.number,
     };
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
+
+    if (this.state.contacts.find(con => con.name === data.name)) {
+      return alert(`${data.name} is already in contacts.`);
+    } else {
+      this.setState(prevState => ({
+        contacts: [contact, ...prevState.contacts],
+      }));
+    }
   };
 
   deletedContact = contactId => {
@@ -52,8 +59,8 @@ export class App extends Component {
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <>
-        <h1>Phonebook</h1>
+      <Wrapper>
+        <MainTitle>Phonebook</MainTitle>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.changeFilter} />
@@ -61,7 +68,7 @@ export class App extends Component {
           contacts={visibleContacts}
           onDeletedContact={this.deletedContact}
         />
-      </>
+      </Wrapper>
     );
   }
 }

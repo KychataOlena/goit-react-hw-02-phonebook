@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TextItem, ButtonItem } from './ContactItem.styled';
 
 export const ContactItem = ({ id, contact, number, onDeletedContact }) => {
   return (
     <>
-      <p>{contact}</p>
-      <span>{number}</span>
-      <button onClick={() => onDeletedContact(id)}>Deleted</button>
+      <TextItem>
+        {contact}: {number}
+      </TextItem>
+
+      <ButtonItem onClick={() => onDeletedContact(id)}>Deleted</ButtonItem>
     </>
   );
 };
