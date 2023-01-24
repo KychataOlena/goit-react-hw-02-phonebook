@@ -18,8 +18,7 @@ export class App extends Component {
 
   formSubmitHandler = data => {
     console.log(data);
-    const contactName = this.state.contacts;
-    // console.log(nanoid());
+     // console.log(nanoid());
     const contact = {
       id: nanoid(),
       name: data.name,
@@ -55,7 +54,7 @@ export class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
 
     return (
