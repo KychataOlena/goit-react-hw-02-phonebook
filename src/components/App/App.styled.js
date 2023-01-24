@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     height: 100%;
     padding: 10px;
     margin-top: 10px;
-}`;
+`;
 
 export const MainTitle = styled.h1`
   font-style: normal;
